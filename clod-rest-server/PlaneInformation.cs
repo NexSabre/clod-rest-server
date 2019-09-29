@@ -1,283 +1,197 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-
-using System.Text;
-using System.IO.MemoryMappedFiles;
 
 
 namespace clod_rest_server
 {
-    public class ServerInformation
-    {
-        public String version { get; } = "0.1";
-        public PlaneInformation planeInformation { get; set; }
-    }
-
     public class PlaneInformation
     {
-        //public Double Nil { get; set; }
-        //public Double Random { get; set; }
-        //public Double Shake { get; set; }
-        //public Double CabinDamage { get; set; }
-        //public Double CabinState { get; set; }
-        //public Double NamedDamage { get; set; }
-        //public Double SystemWear { get; set; }
+        public Double? Nil { get; set; }
+        public Double? M_Random { get; set; }
+        public Double? M_Shake { get; set; }
+        public Double? M_CabinDamage { get; set; }
+        public Double? M_CabinState { get; set; }
+        public Double? M_NamedDamage { get; set; }
+        public Double? M_SystemWear { get; set; }
+        public Double? M_Health { get; set; }
+        public Double? C_Steering { get; set; }
+        public Double? C_Brake { get; set; }
+        public Double? C_Throttle { get; set; }
+        public Double? C_Trigger { get; set; }
+        public Double? C_Pitch { get; set; }
+        public Double? C_Mix { get; set; }
+        public Double? C_WaterRadiator { get; set; }
+        public Double? C_OilRadiator { get; set; }
+        public Double? C_RadiatorAutomation { get; set; }
+        public Double? C_PitchAutomation { get; set; }
+        public Double? C_Compressor { get; set; }
+        public Double? C_Afterburner { get; set; }
+        public Double? C_BoostEnabler { get; set; }
+        public Double? C_SlowRunningCutOut { get; set; }
+        public Double? C_Magneto { get; set; }
+        public Double? C_Feather { get; set; }
+        public Double? C_CarbHeater { get; set; }
+        public Double? C_HatchDoor { get; set; }
+        public Double? C_HatchJettison { get; set; }
+        public Double? C_Timer { get; set; }
+        public Double? C_Timer1 { get; set; }
+        public Double? C_Aileron { get; set; }
+        public Double? C_Elevator { get; set; }
+        public Double? C_Rudder { get; set; }
+        public Double? C_AileronTrim { get; set; }
+        public Double? C_ElevatorTrim { get; set; }
+        public Double? C_RudderTrim { get; set; }
+        public Double? C_TailwheelLock { get; set; }
+        public Double? C_LandingFlap { get; set; }
+        public Double? C_LeadingEdgeSlats { get; set; }
+        public Double? C_Undercarriage { get; set; }
+        public Double? C_UndercarriageEmergency { get; set; }
+        public Double? C_BombBayDoor { get; set; }
+        public Double? C_Airbrake { get; set; }
+        public Double? C_FuelTankSelector { get; set; }
+        public Double? C_TelepirometroElettrico { get; set; }
+        public Double? C_AltimeterPinion { get; set; }
+        public Double? C_AnemometroPinion { get; set; }
+        public Double? C_BombSight { get; set; }
+        public Double? C_Sight { get; set; }
+        public Double? C_Bombenabwurfgerat { get; set; }
+        public Double? C_KraftstoffSelector { get; set; }
+        public Double? C_LiquidGauge0 { get; set; }
+        public Double? C_LiquidGauge1 { get; set; }
+        public Double? C_PriLights { get; set; }
+        public Double? C_SecLights { get; set; }
+        public Double? C_SightLights { get; set; }
+        public Double? C_PitotHeater { get; set; }
+        public Double? C_Handpumpe { get; set; }
+        public Double? C_RadTXRX { get; set; }
+        public Double? C_RadPriNav { get; set; }
+        public Double? C_RadSecNav { get; set; }
+        public Double? C_Kurssteuerung { get; set; }
+        public Double? A_Steering { get; set; }
+        public Double? A_Brake { get; set; }
+        public Double? A_Aileron { get; set; }
+        public Double? A_Elevator { get; set; }
+        public Double? A_Rudder { get; set; }
+        public Double? A_AileronTrim { get; set; }
+        public Double? A_ElevatorTrim { get; set; }
+        public Double? A_RudderTrim { get; set; }
+        public Double? A_Undercarriage { get; set; }
+        public Double? A_UndercarriageShock { get; set; }
+        public Double? A_UndercarriageWheel { get; set; }
+        public Double? A_HatchDoor { get; set; }
+        public Double? A_BombBayDoor { get; set; }
+        public Double? A_ImpellerAngle { get; set; }
+        public Double? A_ImpellerAngularVelocity { get; set; }
+        public Double? A_ImpellerUnfold { get; set; }
+        public Double? A_LandingFlap { get; set; }
+        public Double? A_Airbrake { get; set; }
+        public Double? A_EngineAirRadiator { get; set; }
+        public Double? A_EngineWaterRadiator { get; set; }
+        public Double? A_EngineOilRadiator { get; set; }
+        public Double? A_LeadingEdgeSlat { get; set; }
+        public Double? Z_Coordinates { get; set; }
+        public Double? Z_Orientation { get; set; }
+        public Double? Z_Overload { get; set; }
+        public Double? Z_AltitudeAGL { get; set; }
+        public Double? Z_AltitudeMSL { get; set; }
+        public Double? Z_VelocityIAS { get; set; }
+        public Double? Z_VelocityTAS { get; set; }
+        public Double? Z_VelocityMach { get; set; }
+        public Double? Z_AmbientAirTemperature { get; set; }
+        public Double? S_ElectricVoltage { get; set; }
+        public Double? S_ElectricIncandescingRatio { get; set; }
+        public Double? S_ElectricAmperage { get; set; }
+        public Double? S_ElectricPrimaryPitLight { get; set; }
+        public Double? S_ElectricSecondaryPitLight { get; set; }
+        public Double? S_ElectricSightLight { get; set; }
+        public Double? S_FuelReserve { get; set; }
+        public Double? S_HatchDoor { get; set; }
+        public Double? S_UndercarriageValve { get; set; }
+        public Double? S_PneumoContainerPressure { get; set; }
+        public Double? S_PneumoLinePressure { get; set; }
+        public Double? S_HydroPressure { get; set; }
+        public Double? S_HydroReserve { get; set; }
+        public Double? S_Sturzanlage { get; set; }
+        public Double? S_GunOperation { get; set; }
+        public Double? S_GunReserve { get; set; }
+        public Double? S_GunClipReserve { get; set; }
+        public Double? S_BombReserve { get; set; }
+        public Double? S_Fenster { get; set; }
+        public Double? S_PitotHeater { get; set; }
+        public Double? S_Bombenabwurfgerat { get; set; }
+        public Double? S_Turret { get; set; }
+        public Double? M_Reserved000 { get; set; }
+        public Double? M_Reserved001 { get; set; }
+        public Double? M_Reserved002 { get; set; }
+        public Double? M_Reserved003 { get; set; }
+        public Double? M_Reserved004 { get; set; }
+        public Double? M_Reserved005 { get; set; }
+        public Double? M_Reserved006 { get; set; }
+        public Double? M_Reserved007 { get; set; }
+        public Double? M_Reserved008 { get; set; }
+        public Double? M_Reserved009 { get; set; }
+        public Double? M_Reserved00A { get; set; }
+        public Double? M_Reserved00B { get; set; }
+        public Double? M_Reserved00C { get; set; }
+        public Double? M_Reserved00D { get; set; }
+        public Double? M_Reserved00E { get; set; }
+        public Double? M_Reserved00F { get; set; }
+        public Double? M_Reserved010 { get; set; }
+        public Double? M_Reserved011 { get; set; }
+        public Double? M_Reserved012 { get; set; }
+        public Double? M_Reserved013 { get; set; }
+        public Double? M_Reserved014 { get; set; }
+        public Double? M_Reserved015 { get; set; }
+        public Double? M_Reserved016 { get; set; }
+        public Double? M_Reserved017 { get; set; }
+        public Double? M_Reserved018 { get; set; }
+        public Double? M_Reserved019 { get; set; }
+        public Double? M_Reserved01A { get; set; }
+        public Double? M_Reserved01B { get; set; }
+        public Double? M_Reserved01C { get; set; }
+        public Double? M_Reserved01D { get; set; }
+        public Double? M_Reserved01E { get; set; }
+        public Double? M_Reserved01F { get; set; }
+        public Double? I_Timer { get; set; }
+        public Double? I_AmbientTemp { get; set; }
         public Double? I_EngineRPM { get; set; }
-        public Double I_EngineManPress { get; set; }
-        public Double I_EngineBoostPress { get; set; }
-        public Double I_EngineWatPress { get; set; }
-        public Double I_EngineOilPress { get; set; }
-        public Double I_EngineFuelPress { get; set; }
-        public Double I_EngineWatTemp { get; set; }
-        public Double I_EngineRadTemp { get; set; }
-        public Double I_EngineOilTemp { get; set; }
-        public Double I_EngineOilRadiatorTemp { get; set; }
-        public Double I_EngineTemperature { get; set; }
-        public Double I_EngineCarbTemp { get; set; }
+        public Double? I_EngineManPress { get; set; }
+        public Double? I_EngineBoostPress { get; set; }
+        public Double? I_EngineWatPress { get; set; }
+        public Double? I_EngineOilPress { get; set; }
+        public Double? I_EngineFuelPress { get; set; }
+        public Double? I_EngineWatTemp { get; set; }
+        public Double? I_EngineRadTemp { get; set; }
+        public Double? I_EngineOilTemp { get; set; }
+        public Double? I_EngineOilRadiatorTemp { get; set; }
+        public Double? I_EngineTemperature { get; set; }
+        public Double? I_EngineCarbTemp { get; set; }
+        public Double? I_Pitch { get; set; }
+        public Double? I_VelocityIAS { get; set; }
+        public Double? I_Altitude { get; set; }
+        public Double? I_Variometer { get; set; }
+        public Double? I_Slip { get; set; }
+        public Double? I_MagneticCompass { get; set; }
+        public Double? I_RepeaterCompass { get; set; }
+        public Double? I_Peilzeiger { get; set; }
+        public Double? I_FuelReserve { get; set; }
+        public Double? I_LiquidReserve { get; set; }
+        public Double? I_Voltamperemeter { get; set; }
+        public Double? I_Voltmeter { get; set; }
+        public Double? I_Amperemeter { get; set; }
+        public Double? I_HydroPressure { get; set; }
+        public Double? I_HydroEmPressure { get; set; }
+        public Double? I_Turn { get; set; }
+        public Double? I_AH { get; set; }
+        public Double? I_DirectionIndicator { get; set; }
+        public Double? I_SlavedCompass { get; set; }
+        public Double? I_Suction { get; set; }
+        public Double? I_AFN { get; set; }
+        public Double? I_ADF { get; set; }
+        public Double? I_RDF { get; set; }
+        public Double? I_RMI { get; set; }
+        public Double? I_FLRC { get; set; }
+        public Double? I_Kurssteuerung { get; set; }
+        public Double? I_BombSight { get; set; }
     }
 
-    public class GameCommunications
-    {
-        private MemoryMappedFile m_MemoryMappedFile;
-        private MemoryMappedViewAccessor m_MemoryMappedViewAccessor;
-        public enum ParameterTypes
-        {
-            Nil,
-            M_Random,
-            M_Shake,
-            M_CabinDamage,
-            M_CabinState,
-            M_NamedDamage,
-            M_SystemWear,
-            M_Health,
-            C_Steering,
-            C_Brake,
-            C_Throttle,
-            C_Trigger,
-            C_Pitch,
-            C_Mix,
-            C_WaterRadiator,
-            C_OilRadiator,
-            C_RadiatorAutomation,
-            C_PitchAutomation,
-            C_Compressor,
-            C_Afterburner,
-            C_BoostEnabler,
-            C_SlowRunningCutOut,
-            C_Magneto,
-            C_Feather,
-            C_CarbHeater,
-            C_HatchDoor,
-            C_HatchJettison,
-            C_Timer,
-            C_Timer1,
-            C_Aileron,
-            C_Elevator,
-            C_Rudder,
-            C_AileronTrim,
-            C_ElevatorTrim,
-            C_RudderTrim,
-            C_TailwheelLock,
-            C_LandingFlap,
-            C_LeadingEdgeSlats,
-            C_Undercarriage,
-            C_UndercarriageEmergency,
-            C_BombBayDoor,
-            C_Airbrake,
-            C_FuelTankSelector,
-            C_TelepirometroElettrico,
-            C_AltimeterPinion,
-            C_AnemometroPinion,
-            C_BombSight,
-            C_Sight,
-            C_Bombenabwurfgerat,
-            C_KraftstoffSelector,
-            C_LiquidGauge0,
-            C_LiquidGauge1,
-            C_PriLights,
-            C_SecLights,
-            C_SightLights,
-            C_PitotHeater,
-            C_Handpumpe,
-            C_RadTXRX,
-            C_RadPriNav,
-            C_RadSecNav,
-            C_Kurssteuerung,
-            A_Steering,
-            A_Brake,
-            A_Aileron,
-            A_Elevator,
-            A_Rudder,
-            A_AileronTrim,
-            A_ElevatorTrim,
-            A_RudderTrim,
-            A_Undercarriage,
-            A_UndercarriageShock,
-            A_UndercarriageWheel,
-            A_HatchDoor,
-            A_BombBayDoor,
-            A_ImpellerAngle,
-            A_ImpellerAngularVelocity,
-            A_ImpellerUnfold,
-            A_LandingFlap,
-            A_Airbrake,
-            A_EngineAirRadiator,
-            A_EngineWaterRadiator,
-            A_EngineOilRadiator,
-            A_LeadingEdgeSlat,
-            Z_Coordinates,
-            Z_Orientation,
-            Z_Overload,
-            Z_AltitudeAGL,
-            Z_AltitudeMSL,
-            Z_VelocityIAS,
-            Z_VelocityTAS,
-            Z_VelocityMach,
-            Z_AmbientAirTemperature,
-            S_ElectricVoltage,
-            S_ElectricIncandescingRatio,
-            S_ElectricAmperage,
-            S_ElectricPrimaryPitLight,
-            S_ElectricSecondaryPitLight,
-            S_ElectricSightLight,
-            S_FuelReserve,
-            S_HatchDoor,
-            S_UndercarriageValve,
-            S_PneumoContainerPressure,
-            S_PneumoLinePressure,
-            S_HydroPressure,
-            S_HydroReserve,
-            S_Sturzanlage,
-            S_GunOperation,
-            S_GunReserve,
-            S_GunClipReserve,
-            S_BombReserve,
-            S_Fenster,
-            S_PitotHeater,
-            S_Bombenabwurfgerat,
-            S_Turret,
-            M_Reserved000,
-            M_Reserved001,
-            M_Reserved002,
-            M_Reserved003,
-            M_Reserved004,
-            M_Reserved005,
-            M_Reserved006,
-            M_Reserved007,
-            M_Reserved008,
-            M_Reserved009,
-            M_Reserved00A,
-            M_Reserved00B,
-            M_Reserved00C,
-            M_Reserved00D,
-            M_Reserved00E,
-            M_Reserved00F,
-            M_Reserved010,
-            M_Reserved011,
-            M_Reserved012,
-            M_Reserved013,
-            M_Reserved014,
-            M_Reserved015,
-            M_Reserved016,
-            M_Reserved017,
-            M_Reserved018,
-            M_Reserved019,
-            M_Reserved01A,
-            M_Reserved01B,
-            M_Reserved01C,
-            M_Reserved01D,
-            M_Reserved01E,
-            M_Reserved01F,
-            I_Timer,
-            I_AmbientTemp,
-            I_EngineRPM,
-            I_EngineManPress,
-            I_EngineBoostPress,
-            I_EngineWatPress,
-            I_EngineOilPress,
-            I_EngineFuelPress,
-            I_EngineWatTemp,
-            I_EngineRadTemp,
-            I_EngineOilTemp,
-            I_EngineOilRadiatorTemp,
-            I_EngineTemperature,
-            I_EngineCarbTemp,
-            I_Pitch,
-            I_VelocityIAS,
-            I_Altitude,
-            I_Variometer,
-            I_Slip,
-            I_MagneticCompass,
-            I_RepeaterCompass,
-            I_Peilzeiger,
-            I_FuelReserve,
-            I_LiquidReserve,
-            I_Voltamperemeter,
-            I_Voltmeter,
-            I_Amperemeter,
-            I_HydroPressure,
-            I_HydroEmPressure,
-            I_Turn,
-            I_AH,
-            I_DirectionIndicator,
-            I_SlavedCompass,
-            I_Suction,
-            I_AFN,
-            I_ADF,
-            I_RDF,
-            I_RMI,
-            I_FLRC,
-            I_Kurssteuerung,
-            I_BombSight
-        }
-
-        public GameCommunications()
-        {
-            m_MemoryMappedFile = null;
-            m_MemoryMappedViewAccessor = null;
-        }
-
-
-        private void OpenMMF()
-        {
-            try
-            {
-                m_MemoryMappedFile = MemoryMappedFile.OpenExisting("CLODDeviceLink", MemoryMappedFileRights.Read);
-                m_MemoryMappedViewAccessor = m_MemoryMappedFile.CreateViewAccessor(0, 10000 * sizeof(double), MemoryMappedFileAccess.Read);
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.ToString());
-                return;
-            }
-        }
-
-        public double? GetParameter(ParameterTypes ParameterType, int SubType)
-        {
-            if (m_MemoryMappedFile == null)
-                OpenMMF();
-
-            try
-            {
-                return m_MemoryMappedViewAccessor.ReadDouble((((int)ParameterType * 10) + SubType) * sizeof(double));
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.ToString());
-                return null;
-            }
-        }
-
-        //public static void Main(string[] args)
-        //{
-        //    while (true)
-        //    {
-        //        GameCommunications gameCommunications = new GameCommunications();
-        //        Console.WriteLine(gameCommunications.GetParameter(ParameterTypes.I_EngineManPress, 0));
-        //        Thread.Sleep(1000);
-        //    }
-        //}
-    }
 }
